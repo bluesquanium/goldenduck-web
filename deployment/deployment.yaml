@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gdweb
+  namespace: gd
+  labels:
+    app: gdweb
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: gdweb
+  template:
+    metadata:
+      labels:
+        app: gdweb
+    spec:
+      containers:
+      - name: gdweb
+        image: docker.io/bluesquanium/goldenduck_web:latest
+        ports:
+        - containerPort: 80
